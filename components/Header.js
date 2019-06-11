@@ -16,9 +16,11 @@ const Header = () => {
 
 const styles = StyleSheet.create({
 	header: {
-		padding: 20
+		height: 80,
+		justifyContent: 'center'
 	},
 	logo: {
+		padding: 20,
 		fontSize: 20,
 		fontWeight: 'bold'
 	}
