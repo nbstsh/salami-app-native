@@ -1,19 +1,23 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import useRoute from './hooks/useRoute';
+import HomeScreen from './components/HomeScreen';
+import CameraScreen from './components/CameraScreen';
+import { ROUTE } from './constants';
+import AppContext from './contexts/AppContext';
+
+const routes = {
+	[ROUTE.HOME]: <HomeScreen />,
+	[ROUTE.CAMERA]: <CameraScreen />
+};
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
-}
+	const AppContextValue = {
+		...useRoute()
+	};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+	return (
+		<AppContext.Provider value={AppContextValue}>
+			{routes[AppContextValue.currentRoute]}
+		</AppContext.Provider>
+	);
+}
