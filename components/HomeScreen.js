@@ -22,7 +22,7 @@ const Home = () => {
 const styles = StyleSheet.create({
 	messageBox: {
 		backgroundColor: '#F9F9F9',
-		height: 480,
+		height: '75%',
 		alignItems: 'center',
 		justifyContent: 'center'
 	},
