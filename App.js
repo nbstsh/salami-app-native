@@ -4,6 +4,7 @@ import HomeScreen from './components/HomeScreen';
 import CameraScreen from './components/CameraScreen';
 import { ROUTE } from './constants';
 import AppContext from './contexts/AppContext';
+import useImage from './hooks/useImage';
 
 const routes = {
 	[ROUTE.HOME]: <HomeScreen />,
@@ -12,7 +13,8 @@ const routes = {
 
 export default function App() {
 	const AppContextValue = {
-		...useRoute()
+		...useRoute(),
+		...useImage()
 	};
 
 	return (
