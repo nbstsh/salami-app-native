@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import { ROUTE } from '../constants';
 import NavigationButton from './common/NavigationButton';
 
-const Home = () => {
+const HomeScreen = () => {
 	return (
 		<Layout>
 			<View style={styles.messageBox}>
@@ -37,4 +37,4 @@ const styles = StyleSheet.create({
 	}
 });
 
-export default Home;
+export default HomeScreen;
