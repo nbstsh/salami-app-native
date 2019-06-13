@@ -1,30 +1,33 @@
-import React, { useRef, useContext } from 'react';
+import React, { useRef, useContext, useEffect } from 'react';
 import Layout from './Layout';
-import { View, Button, Image, StyleSheet } from 'react-native';
+import { View, Button, StyleSheet } from 'react-native';
 import useCustomCamera from '../hooks/useCustomCamera';
 import { Camera } from 'expo-camera';
 import AppContext from '../contexts/AppContext';
 import { ROUTE } from '../constants';
+import CameraButton from './common/CameraButton';
 
 const CameraScreen = () => {
-	const { setImage, navigate } = useContext(AppContext);
 	const cameraRef = useRef(null);
+	const { setTakenPhoto, resetTakenPhoto, navigate } = useContext(AppContext);
 	const { hasCameraPermission, cameraType } = useCustomCamera();
-	console.log({ hasCameraPermission, cameraType });
+
+	// every time user visit camera screen clean existing photo data
+	useEffect(() => {
+		resetTakenPhoto();
+	}, []);
 
 	const takePictureAsync = async () => {
-		const image = await cameraRef.current.takePictureAsync();
-
-		console.log({ image });
+		const photo = await cameraRef.current.takePictureAsync();
 		// set taken photo to top level context
-		setImage(image);
-		// navigate to cofirmatin screen
-		// navigate(ROUTE.HOME);
+		setTakenPhoto(photo);
+		// navigate to cofirmation screen
+		navigate(ROUTE.SNAP);
 	};
 
 	return (
 		<Layout>
-			<View style={styles.main}>
+			<View style={styles.cameraBox}>
 				{hasCameraPermission && (
 					<Camera
 						ref={cameraRef}
@@ -34,14 +37,15 @@ const CameraScreen = () => {
 				)}
 			</View>
 			<View style={styles.buttonBox}>
-				<Button title='CAPTURE' onPress={() => takePictureAsync()} />
+				<CameraButton onPress={() => takePictureAsync()} />
 			</View>
 		</Layout>
 	);
 };
 
 const styles = StyleSheet.create({
-	main: {
+	cameraBox: {
+		backgroundColor: '#F9F9F9',
 		height: '75%'
 	},
 	camera: {
