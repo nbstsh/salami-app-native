@@ -1,4 +1,5 @@
 import React from 'react';
+import './utils/firebase-init';
 
 import { ROUTE } from './constants';
 import HomeScreen from './components/HomeScreen';
