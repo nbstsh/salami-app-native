@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from './Layout';
 import { View, Text, StyleSheet } from 'react-native';
-import { ROUTE } from '../constants';
+import { ROUTE, MAIN_BOX_HEIGHT } from '../constants';
 import NavigationButton from './common/NavigationButton';
 
 const HomeScreen = () => {
@@ -22,7 +22,7 @@ const HomeScreen = () => {
 const styles = StyleSheet.create({
 	messageBox: {
 		backgroundColor: '#F9F9F9',
-		height: '75%',
+		height: MAIN_BOX_HEIGHT,
 		alignItems: 'center',
 		justifyContent: 'center'
 	},

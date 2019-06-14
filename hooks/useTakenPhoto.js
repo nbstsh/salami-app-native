@@ -21,7 +21,7 @@ const useTakenPhoto = () => {
 
 			// send request to image recognition api
 			// TODO: replace dummy
-			const result = 'Is Salami';
+			const result = 'Is A Salami!';
 
 			setIsUploading(false);
 			setResult(result);

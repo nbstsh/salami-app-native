@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import Layout from './Layout';
 import { View, StyleSheet, Text, Image } from 'react-native';
-import { ROUTE } from '../constants';
+import { ROUTE, MAIN_BOX_HEIGHT } from '../constants';
 import AppContext from '../contexts/AppContext';
 import CancelButton from './common/CancelButton';
 import ConfirmButton from './common/ConfirmButton';
@@ -54,7 +54,7 @@ const SnapScreen = () => {
 const styles = StyleSheet.create({
 	imageBox: {
 		backgroundColor: '#F9F9F9',
-		height: '75%',
+		height: MAIN_BOX_HEIGHT,
 		alignItems: 'center',
 		justifyContent: 'center'
 	},
