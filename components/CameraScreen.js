@@ -4,7 +4,7 @@ import { View, Button, StyleSheet } from 'react-native';
 import useCustomCamera from '../hooks/useCustomCamera';
 import { Camera } from 'expo-camera';
 import AppContext from '../contexts/AppContext';
-import { ROUTE } from '../constants';
+import { ROUTE, MAIN_BOX_HEIGHT } from '../constants';
 import CameraButton from './common/CameraButton';
 
 const CameraScreen = () => {
@@ -46,7 +46,7 @@ const CameraScreen = () => {
 const styles = StyleSheet.create({
 	cameraBox: {
 		backgroundColor: '#F9F9F9',
-		height: '75%'
+		height: MAIN_BOX_HEIGHT
 	},
 	camera: {
 		width: '100%',

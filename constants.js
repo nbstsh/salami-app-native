@@ -7,3 +7,4 @@ export const ROUTE = {
 };
 
 export const ICON_BUTTON_SIZE = 70;
+export const MAIN_BOX_HEIGHT = '75%';
