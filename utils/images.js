@@ -1,4 +1,5 @@
 import { storage } from './firebase-init';
+import { DEFAULT_FILE_TYPE } from '../constants';
 
 const getImagesRef = () => {
 	return storage.ref().child('images');
@@ -10,7 +11,7 @@ const getImageRef = fileName => {
 };
 
 const generateFileName = () => {
-	return new Date().toISOString();
+	return `${new Date().getTime()}.${DEFAULT_FILE_TYPE.EXTENSION}`;
 };
 
 const generateMetadata = () => {
@@ -19,6 +20,7 @@ const generateMetadata = () => {
 	};
 };
 
+// upload image blob data to firebase storage
 export const uploadImage = async imageBlob => {
 	if (!imageBlob) throw new Error('Image blob needs to be provided.');
 
