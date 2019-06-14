@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { uploadImage } from '../utils/images';
 
 const useTakenPhoto = () => {
 	const [takenPhoto, setTakenPhoto] = useState(null);
@@ -16,8 +17,9 @@ const useTakenPhoto = () => {
 
 		try {
 			// upload taken photo to firebase
-			// TODO: replace dummy
-			//uploadPhotoToFirebase();
+			const res = await fetch(takenPhoto.uri);
+			const imageBlob = await res.blob();
+			await uploadImage(imageBlob);
 
 			// send request to image recognition api
 			// TODO: replace dummy
