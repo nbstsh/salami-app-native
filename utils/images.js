@@ -28,4 +28,6 @@ export const uploadImage = async imageBlob => {
 	const metadata = generateMetadata();
 	const ref = getImageRef(fileName);
 	await ref.put(imageBlob, metadata);
+
+	return { fileName, metadata };
 };

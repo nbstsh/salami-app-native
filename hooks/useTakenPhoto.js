@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { uploadImage } from '../utils/images';
+import { analyzeImage } from '../utils/analyze';
 
 const useTakenPhoto = () => {
 	const [takenPhoto, setTakenPhoto] = useState(null);
@@ -19,11 +20,10 @@ const useTakenPhoto = () => {
 			// upload taken photo to firebase
 			const res = await fetch(takenPhoto.uri);
 			const imageBlob = await res.blob();
-			await uploadImage(imageBlob);
+			const { fileName } = await uploadImage(imageBlob);
 
 			// send request to image recognition api
-			// TODO: replace dummy
-			const result = 'Is A Salami!';
+			const result = await analyzeImage(takenPhoto.uri, fileName);
 
 			setIsUploading(false);
 			setResult(result);
